@@ -1,0 +1,104 @@
+<div class="container emp-profile">
+  <form method="post">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="profile-img">
+          <img src={{gitUserData.avatar_url}} alt="user Photo" />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="profile-head">
+          <h5>
+            {{gitUserData.name}}
+          </h5>
+          <h6>
+            UserName :
+            {{gitUserData.login}}
+          </h6>
+          <p class="proile-rating">Number Of Public Repositories : <span>{{gitUserData.public_repos}}</span></p>
+          <p class="proile-rating">Number of Private Repositories : <span>{{gitUserData.total_private_repos}}</span></p>
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+                aria-selected="true">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="profile-work">
+          <p>Important Links</p>
+          <a href={{gitUserData.html_url}}>Visit to your GitHub page</a><br />
+          <a href={{gitUserData.followers_url}}>See all followers</a>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="tab-content profile-tab" id="myTabContent">
+          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="row">
+              <div class="col-md-6">
+                <label>User Id</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{gitUserData.id}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Created Date</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{gitUserData.created_at}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Last updated Date</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{gitUserData.updated_at}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Email</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{gitUserData.email}}</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <h5>Repo Details</h5>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Language</th>
+            <th>Privacy</th>
+            <th>Created Date</th>
+            <th>Issue Count</th>
+            <th>Visit to Repo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let repo of repoData">
+            <td>{{repo.name}}</td>
+            <td>{{repo.language}}</td>
+            <td>{{repo.private}}</td>
+            <td>{{repo.created_at}}</td>
+            <td>{{repo.open_issues}}</td>
+            <td><a href={{repo.html_url}}>Go To Repo</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </form>
+</div>
